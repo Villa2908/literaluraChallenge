@@ -73,7 +73,9 @@ public class Principal {
                     .convertirDatos(resultado.get(), ResultadoConsultaDTO.class);
             LibroDTO libroObtenido = resultConsulta.resultado().get(0);
                 //Por cada libroDTO obtengo el autorDTO de la lista AutorDTO de la respuesta
-                Autor autorResultado = new Autor(libroObtenido.autor().get(0));
+                Autor autorResultado = new Autor(libroObtenido.autor().isEmpty() ?
+                        new AutorDTO("Desconocido", 0,0) :
+                        libroObtenido.autor().get(0));
                 Libro libroGuardar = new Libro(libroObtenido);
                 Idioma idiomaGuardar = libroGuardar.getIdioma();
 

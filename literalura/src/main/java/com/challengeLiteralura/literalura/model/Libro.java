@@ -26,7 +26,9 @@ public class Libro {
         this.titulo = dto.titulo();
         this.idApi = dto.id();
         this.descargas = dto.descargas();
-        this.autor = new Autor(dto.autor().get(0));
+        this.autor = new Autor(dto.autor().isEmpty() ?
+                new AutorDTO("Desconocido", 0,0)
+                : dto.autor().get(0));
         this.idioma = new Idioma(new IdiomaDTO(dto.idiomas()));
     }
 
